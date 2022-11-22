@@ -3,6 +3,7 @@
 import { ResponsiveBar } from '@nivo/bar'
 import { useEffect } from 'react';
 import { useState } from 'react'
+import { useSelector } from 'react-redux';
 import PoseApi from '../../../apis/PoseApi';
 
 let data = [
@@ -44,8 +45,23 @@ let data = [
 ]
 
 const PoseTimeStackChart = ({}) => {
+    const auth = useSelector(state=>state.userData.auth);
     const poseApi = new PoseApi();
+    const straightTime = useSelector(state=>state.pose.straightTime);
+    const turtleTime = useSelector(state=>state.pose.turtleTime);
     const [poseWeekData, setPoseWeekData] = useState([]);
+
+    useEffect(()=>{
+        const td = new Date();
+        const today = `${td.getFullYear()}-${td.getMonth()+1}-${td.getDate()}`;
+        const newPoseWeekData = poseWeekData.filter(el=>el.date !== today);
+        const todayPoseInfo = {
+            date: today,
+            "바른 자세": parseInt(straightTime / (straightTime + turtleTime) * 100),
+            "거북목": parseInt(turtleTime / (straightTime + turtleTime) * 100),
+        }
+        setPoseWeekData([...newPoseWeekData, todayPoseInfo]);
+    }, [straightTime, turtleTime])
 
     useEffect(()=>{
         const getPoseWeekData = async () => {
@@ -63,8 +79,8 @@ const PoseTimeStackChart = ({}) => {
             }
             setPoseWeekData(tempPoseWeekData);
         }
-        getPoseWeekData();
-    }, [])
+        auth && getPoseWeekData();
+    }, [auth])
 
     return (
     <ResponsiveBar
