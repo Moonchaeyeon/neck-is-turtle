@@ -2,7 +2,6 @@
 
 .mission-container {
     width: calc(100% - rem(30));
-    height: 100%;
     text-align: left;
     flex-grow: 1;
     padding: rem(15);
@@ -35,6 +34,7 @@
         gap: rem(10);
         flex-grow: 1;
         overflow: auto;
+        max-height: 19vh;
 
         .mission-elem {
             display: flex;
