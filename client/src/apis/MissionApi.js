@@ -13,7 +13,7 @@ class MissionApi {
     }
 
     completeMission = async (missionId) => {
-        await post(`mission/${missionId}`);
+        // await post(`mission/${missionId}`);
         store.dispatch(completeMission(missionId));
     }
 }
