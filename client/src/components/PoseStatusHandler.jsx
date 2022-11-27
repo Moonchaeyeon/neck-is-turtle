@@ -27,7 +27,7 @@ function PoseStatusHandler({ status }) {
                     dispatch(detectTurtle());
 
                     // 거북목 자세일 때 15초마다 알람을 보내도록
-                    if (time.current % 5 === 0) {
+                    if (time.current % 2 === 0) {
                         fireNotification('자세를 고쳐 앉으세요', 'WARNING');
                     }
                     break;

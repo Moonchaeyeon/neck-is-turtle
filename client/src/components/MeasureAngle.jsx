@@ -8,19 +8,22 @@ import { BsFillCheckCircleFill, BsFillExclamationTriangleFill } from 'react-icon
 import { AiTwotoneSetting } from 'react-icons/ai';
 import './MeasurePose.scss';
 import PoseStatusHandler from "./PoseStatusHandler";
+import { getDegree } from "../utils/Vector";
 
 let camera;
 
-function MeasurePose({  }) {
+function MeasureAngle({  }) {
     const userApi = new UserApi();
     const webcamRef = useRef();
     const straightRatio = useSelector(state=>state.userData.straightRatio);
+    // const straightAngle = useSelector(state=>state.userData.straightAngle);
+    const [straightAngle, setStraightAngle] = useState(20);
     const [faceDetected, setFaceDetected] = useState(false);
     const [faceW, setFaceW] = useState(0);
     const [shoulderW, setShoulderW] = useState(0);
-    const [neckDegree, setNeckDegree] = useState(0);
+    const [angle, setAngle] = useState(20);
     const [status, setStatus] = useState('NOT_DETECTED'); // NOT_DETECTED, TURTLE, STRAIGHT
-    const [maxStraightRange, setMaxStraightRange] = useState(0.04);
+    const [maxStraightRange, setMaxStraightRange] = useState(15);
     
     const getDistance = (p1, p2) => {
         return Math.sqrt((p1.x - p2.x)**2 + (p1.y - p2.y)**2 + (p1.z - p2.z)**2);
@@ -46,11 +49,15 @@ function MeasurePose({  }) {
         // let p = results.poseLandmarks[7];
         // console.log(Math.round(p.x*100), Math.round(p.y*100), Math.round(p.z*100));
 
-        const faceMidPoint = getMidPoint(results.poseLandmarks[7], results.poseLandmarks[8]);
+        // const faceMidPoint = getMidPoint(results.poseLandmarks[7], results.poseLandmarks[8]);
         const shoulderMidPoint = getMidPoint(results.poseLandmarks[11], results.poseLandmarks[12]);
-        const neckDirectionVector = getDirectionVector(faceMidPoint, shoulderMidPoint);
-        // console.log(Math.asin(Math.abs(neckDirectionVector.z) / getDistance({x:0,y:0,z:0}, neckDirectionVector)) / Math.PI * 180);
-        // setNeckDegree(Math.asin(Math.abs(neckDirectionVector.z) / getDistance({x:0,y:0,z:0}, neckDirectionVector)) / Math.PI * 180);
+
+        const leftDirectionVector = getDirectionVector(results.poseLandmarks[7], shoulderMidPoint);
+        const rightDirectionVector = getDirectionVector(results.poseLandmarks[8], shoulderMidPoint);
+        const _angle = getDegree(leftDirectionVector, rightDirectionVector);
+        setAngle(_angle);
+        // console.log(angle);
+        // console.log(90.15 - 2.84*angle+0.03*(angle**2));
       } else {
         setFaceDetected(false);
         status !== 'NOT_DETECTED' && setStatus('NOT_DETECTED');
@@ -114,7 +121,7 @@ function MeasurePose({  }) {
             mirrored={true}
           />
           <button className="set-straight-standard">
-            <AiTwotoneSetting onClick={()=>{userApi.setStraightRatio(faceW/shoulderW)}}/>
+            <AiTwotoneSetting onClick={()=>{setStraightAngle(angle)}}/>
             <div className="set-straight-standard-description">
               자세가 제대로 측정되지 않는다면<br/>
               버튼을 눌러 바른 자세 기준을 재설정해주세요!
@@ -125,7 +132,7 @@ function MeasurePose({  }) {
             ? <>
 
           {
-            !!((faceW / shoulderW) - straightRatio > maxStraightRange)
+            !!(angle - straightAngle > maxStraightRange)
             ? <div className="pose-status" id="turtle">
               <BsFillExclamationTriangleFill />
               <span>바르지 않은 자세입니다</span>
@@ -153,8 +160,23 @@ function MeasurePose({  }) {
               <div>화면에 얼굴이 잘 나오는 지 확인해주세요</div>
             </div>
           }
+
+          <div className="curr-status">
+            <div>현재 귀 사이 각도 : { Math.round(angle) }</div>
+            <div>바른 자세 기준 각도 : { Math.round(straightAngle) }</div>
+            <div>차이값 : { Math.round(angle - straightAngle) }</div>
+            <div>임계치 : { Math.round(maxStraightRange) }</div>
+            <input 
+              type="range"
+              min="0"
+              max="30"
+              value={maxStraightRange}
+              onChange={(e)=>{setMaxStraightRange(e.target.value)}}
+            />
+          </div>
+
         </div>
       </div>
     )
 }
-export default MeasurePose;
+export default MeasureAngle;
