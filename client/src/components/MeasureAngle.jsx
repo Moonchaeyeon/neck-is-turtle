@@ -12,6 +12,8 @@ import { getDegree } from "../utils/Vector";
 
 let camera;
 
+let saveData = [];
+
 function MeasureAngle({  }) {
     const userApi = new UserApi();
     const webcamRef = useRef();
@@ -24,6 +26,8 @@ function MeasureAngle({  }) {
     const [angle, setAngle] = useState(20);
     const [status, setStatus] = useState('NOT_DETECTED'); // NOT_DETECTED, TURTLE, STRAIGHT
     const [maxStraightRange, setMaxStraightRange] = useState(15);
+
+    const [saveData, setSaveData] = useState([]);
     
     const getDistance = (p1, p2) => {
         return Math.sqrt((p1.x - p2.x)**2 + (p1.y - p2.y)**2 + (p1.z - p2.z)**2);
@@ -36,6 +40,10 @@ function MeasureAngle({  }) {
     const getDirectionVector = (p1, p2) => {
       return { x: p1.x - p2.x, y: p1.y - p2.y, z: p1.z - p2.z };
     }
+
+    // useEffect(()=>{
+    //   console.log(saveData);
+    // }, [saveData])
 
     const onResults = (results) => {
       if (results.poseLandmarks?.length && results.poseLandmarks[7]) {
@@ -58,6 +66,11 @@ function MeasureAngle({  }) {
         setAngle(_angle);
         // console.log(angle);
         // console.log(90.15 - 2.84*angle+0.03*(angle**2));
+
+        saveData.push({
+          "어깨 너비": shoulderWidth,
+          "귀사각": _angle,
+        });
       } else {
         setFaceDetected(false);
         status !== 'NOT_DETECTED' && setStatus('NOT_DETECTED');
@@ -121,7 +134,7 @@ function MeasureAngle({  }) {
             mirrored={true}
           />
           <button className="set-straight-standard">
-            <AiTwotoneSetting onClick={()=>{setStraightAngle(angle)}}/>
+            <AiTwotoneSetting onClick={()=>{setStraightAngle(angle); console.log(saveData)}}/>
             <div className="set-straight-standard-description">
               자세가 제대로 측정되지 않는다면<br/>
               버튼을 눌러 바른 자세 기준을 재설정해주세요!
