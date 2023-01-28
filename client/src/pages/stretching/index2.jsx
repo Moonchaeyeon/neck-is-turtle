@@ -28,7 +28,7 @@ function Stretching() {
                     const shoulderMid = getMidPoint(results.poseLandmarks[11], results.poseLandmarks[12]);
                     const neckDirectionVector = getDirectionVector(shoulderMid, results.poseLandmarks[0]);
                     const neckRotateDegree = getDegree(neckDirectionVector, { x: 0, y: 1, z: 0 });
-
+    
                     // 목이 10도 이상 오른쪽으로 기울어져 있다면
                     if (neckRotateDegree > 10 && neckDirectionVector.x > 0) {
                         setCorrectPose(true);
@@ -52,7 +52,7 @@ function Stretching() {
                     const shoulderMid = getMidPoint(results.poseLandmarks[11], results.poseLandmarks[12]);
                     const neckDirectionVector = getDirectionVector(shoulderMid, results.poseLandmarks[0]);
                     const neckRotateDegree = getDegree(neckDirectionVector, { x: 0, y: 1, z: 0 });
-
+    
                     // 목이 10도 이상 왼쪽으로 기울어져 있다면
                     if (neckRotateDegree > 10 && neckDirectionVector.x < 0) {
                         setCorrectPose(true);
@@ -75,7 +75,7 @@ function Stretching() {
                     console.log(results.poseLandmarks[11].y , results.poseLandmarks[13].y )
                     const raiseRightArm = results.poseLandmarks[12].y > results.poseLandmarks[14].y;
                     const raiseLeftArm = results.poseLandmarks[11].y > results.poseLandmarks[13].y;
-
+    
                     // 양 팔을 모두 들었다면
                     if (raiseLeftArm && raiseRightArm) {
                         setCorrectPose(true);

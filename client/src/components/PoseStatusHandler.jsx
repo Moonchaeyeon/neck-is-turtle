@@ -22,15 +22,18 @@ function PoseStatusHandler({ status }) {
             time.current += 1;
             setSec(time.current);
             switch(status) {
+                // 1)거북목인 경우
                 case 'TURTLE':
                     setTurtleSec(time.current);
                     dispatch(detectTurtle());
 
                     // 거북목 자세일 때 15초마다 알람을 보내도록
-                    if (time.current % 2 === 0) {
+                    if (time.current % 15 === 0) {
                         fireNotification('자세를 고쳐 앉으세요', 'WARNING');
                     }
                     break;
+                
+                // 2) 바른 자세인 경우
                 case 'STRAIGHT':
                     setStraightSec(time.current);
                     dispatch(detectStraight());

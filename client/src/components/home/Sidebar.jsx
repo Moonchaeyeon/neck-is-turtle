@@ -6,7 +6,8 @@ import './Sidebar.scss';
 
 function Sidebar() {
     const dispatch = useDispatch();
-    const auth = useSelector(state=>state.userData.auth);
+    // const auth = useSelector(state=>state.userData.auth);
+    const auth = true;
     const userPicture = useSelector(state=>state.userData.picture);
     const userName = useSelector(state=>state.userData.name);
 

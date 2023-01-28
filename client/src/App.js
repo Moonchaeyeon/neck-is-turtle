@@ -4,7 +4,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { checkAuth } from './utils/CheckAuth';
 import Home from './components/home';
 import LoginModal from './components/login';
-import Stretching from './components/stretching';
+import Stretching from './pages/stretching';
+import StretchingAll from './pages/stretchingAll';
 
 function App() {
   const showLogin = useSelector(state=>state.modal.showLogin);
@@ -17,7 +18,10 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/stretching" element={<Stretching />}/>
+          <Route path="/stretching">
+            <Route index element={<StretchingAll />}/>
+            <Route path=":stretchingId" element={<Stretching />}/>
+          </Route>
           <Route path="/" element={<Home />}/>
         </Routes>
       </BrowserRouter>

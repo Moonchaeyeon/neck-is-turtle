@@ -11,8 +11,8 @@ function Dashboard() {
         <div className="dashboard">
             <div className="today-webcam-wrapper">
                 <TodayChart />
-                {/* <MeasurePose /> */}
-                <MeasureAngle />
+                <MeasurePose />
+                {/* <MeasureAngle /> */}
             </div>
             <div className="posture-transition-wrapper">
                 <PostureCalendar />
