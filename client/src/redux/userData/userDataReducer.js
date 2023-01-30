@@ -1,7 +1,7 @@
 import { ACTION_TYPES } from "./userDataTypes";
 
 const initialState = {
-    auth: true,
+    auth: false,
     name: '',
     email: '',
     picture: null,

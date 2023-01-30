@@ -15,6 +15,22 @@
     box-shadow: 0px 5rem 5rem 5rem rgb(58 56 56 / 20%);
     animation: showDown 0.5s;
 
+    .login-button {
+        display: flex;
+        align-items: center;
+        border-radius: rem(25);
+        background-color: #fae100;
+        gap: rem(10);
+        padding: rem(13) rem(45);
+        font-weight: 500;
+        @include hoverDown;
+
+        svg {
+            width: rem(25);
+            height: rem(25);
+        }
+    }
+
     .modal-header {
         margin-bottom: rem(50);
 
