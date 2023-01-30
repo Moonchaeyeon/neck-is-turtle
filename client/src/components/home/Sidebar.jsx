@@ -6,8 +6,7 @@ import './Sidebar.scss';
 
 function Sidebar() {
     const dispatch = useDispatch();
-    // const auth = useSelector(state=>state.userData.auth);
-    const auth = true;
+    const auth = useSelector(state=>state.userData.auth);
     const userPicture = useSelector(state=>state.userData.picture);
     const userName = useSelector(state=>state.userData.name);
 
@@ -23,7 +22,7 @@ function Sidebar() {
                     {/* <div className="user-title">바른 자세 전문가</div> */}
                 </div>
                 </>
-                : <button onClick={()=>{dispatch(setShowLoginModal(true))}}>
+                : <button className="go-to-login" onClick={()=>{dispatch(setShowLoginModal(true))}}>
                     로그인 하러 가기
                 </button>
             }
