@@ -6,8 +6,8 @@ import { Pose } from '@mediapipe/pose';
 import { Camera } from '@mediapipe/camera_utils';
 import { BsFillCheckCircleFill, BsFillExclamationTriangleFill } from 'react-icons/bs';
 import { AiTwotoneSetting } from 'react-icons/ai';
-import './MeasurePose.scss';
 import PoseStatusHandler from "./PoseStatusHandler";
+import './MeasurePose.scss';
 
 let camera;
 
@@ -41,7 +41,6 @@ function MeasurePose({  }) {
         const shoulderWidth = getDistance(results.poseLandmarks[11], results.poseLandmarks[12]);
         setFaceW(Math.round(faceWidth * 100));
         setShoulderW(Math.round(shoulderWidth * 100));
-        // console.log(shoulderWidth);
 
         // let p = results.poseLandmarks[7];
         // console.log(Math.round(p.x*100), Math.round(p.y*100), Math.round(p.z*100));
@@ -59,19 +58,20 @@ function MeasurePose({  }) {
     }
 
     useEffect(() => {
+      const setupCamera = async () => {
         const pose = new Pose({
           locateFile: (file) => {
-            return `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`;
+            return `https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.5.1675469404/${file}`;
           },
         });
-        
+
         pose.setOptions({
             modelComplexity: 1,
             smoothLandmarks: true,
             enableSegmentation: true,
             smoothSegmentation: true,
             minDetectionConfidence: 0.5,
-            minTrackingConfidence: 0.5
+            minTrackingConfidence: 0.5,
         });
         
         pose.onResults(onResults);
@@ -89,17 +89,15 @@ function MeasurePose({  }) {
           });
           camera.start();
         }
+      }
+      setupCamera();
+
     }, [webcamRef, webcamRef.current]);
 
     useEffect(()=>{
       if (!!((faceW / shoulderW) - straightRatio > maxStraightRange)) { status !== 'TURTLE' && setStatus('TURTLE'); }
       else  { status !== 'STRAIGHT' && setStatus('STRAIGHT'); }
     }, [faceW, shoulderW])
-
-    // useEffect(()=>{
-    //   if (neckDegree > 28) { status !== 'TURTLE' && setStatus('TURTLE'); }
-    //   else  { status !== 'STRAIGHT' && setStatus('STRAIGHT'); }
-    // }, [neckDegree])
 
     return (
       <div className="webcam-container"
