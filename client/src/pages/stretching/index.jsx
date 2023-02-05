@@ -20,7 +20,7 @@ function Stretching() {
 
     useEffect(() => {
         setStretchingSteps(stretchingList.find((el)=>el.id===stretchingId).steps);
-    }, [])
+    }, [stretchingId])
 
     const [completeList, setCompleteList] = useState(new Array(stretchingSteps.length));
 

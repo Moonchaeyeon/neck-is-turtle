@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@mediapipe/camera_utils": "^0.3.1640029074",
-    "@mediapipe/pose": "^0.5.1635988162",
+    "@mediapipe/camera_utils": "^0.3.1675465971",
+    "@mediapipe/pose": "^0.5.1675469404",
     "@nivo/bar": "^0.80.0",
     "@nivo/calendar": "^0.80.0",
     "@nivo/core": "^0.80.0",
