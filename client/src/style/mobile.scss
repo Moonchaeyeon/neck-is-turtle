@@ -1,0 +1,16 @@
+@use "sass:math";
+
+$vw-viewport: 600;
+@function get-vw($px){
+    $vw-context: $vw-viewport * 0.01 * 1px;
+    @return math.div($px, $vw-context) * 1vw;
+}
+
+@mixin set-vw($property, $px){
+    @include MOBILE {
+        #{$property}: get-vw($px);
+    }
+    #{$property}: $px;
+}
+
+@mixin MOBILE{ @media (max-width: 600px){ @content; } } // 모바일 화면

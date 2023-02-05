@@ -1,0 +1,105 @@
+[
+    {
+        "category": "통증",
+        "maxScore": 15,
+        "questionList": [
+            {
+                "question": "목과 어깨가 자주 아프고 무거운 느낌 이 있다.",
+                "answers": [
+                    {
+                        "answer": "항상 목이랑 어깨가 결리고 무거워 ᅲᅲ",
+                        "score": 2
+                    },
+                    {
+                        "answer": "아프긴 한데, 그렇게 심하지는 않아.",
+                        "score": 1
+                    },
+                    {
+                        "answer": "별로 아프진 않았던 것 같아.",
+                        "score": 0
+                    }
+                ]
+            },
+            {
+                "question": "목뒤가 자주 뻐근하다.",
+                "answers": [
+                    {
+                        "answer": "항상 목뒤가 뻐근해 ᅲᅲ",
+                        "score": 3
+                    },
+                    {
+                        "answer": "뻐근하긴 한데, 그렇게 심하지는 않아.",
+                        "score": 2
+                    },
+                    {
+                        "answer": "별로 뻐근하진 않았던 것 같아.",
+                        "score": 0
+                    }
+                ]
+            },
+            {
+                "question": "피곤할 때 머리가 자주 아프다.",
+                "answers": [
+                    {
+                        "answer": "항상 머리가 아프지 ᅲᅲ",
+                        "score": 2
+                    },
+                    {
+                        "answer": "아프긴 한데, 그렇게 심하지는 않아.",
+                        "score": 1
+                    },
+                    {
+                        "answer": "별로 아프진 않았던 것 같아.",
+                        "score": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "category": "생활 습관",
+        "maxScore": 8,
+        "questionList": [
+            {
+                "question": "컴퓨터를 하루 6시간 이상 사용하거나, 스마트폰을 하루 5시간 이상 사용한다.",
+                "answers": [
+                    {
+                        "answer": "맞아.. 저정도는 하는 것 같아.",
+                        "score": 2
+                    },
+                    {
+                        "answer": "꽤 하기는 하는데, 저것보단 조금하는 것 같아.",
+                        "score": 1
+                    },
+                    {
+                        "answer": "컴퓨터와 스마트폰을 거의 하지 않아.",
+                        "score": 0
+                    }
+                ]
+            }
+        ]
+    }, 
+    {
+        "category": "자세",
+        "maxScore": 11,
+        "questionList": [
+            {
+                "question": "자세가 구부정하다는 말을 자주 듣는다.",
+                "answers": [
+                    {
+                        "answer": "완전 맞아, 다들 그렇게 말해",
+                        "score": 3
+                    },
+                    {
+                        "answer": "가끔 듣긴 하는데, 자주 듣지는 않아.",
+                        "score": 2
+                    },
+                    {
+                        "answer": "그런 말을 거의 들어본 적 없어.",
+                        "score": 0
+                    }
+                ]
+            }
+        ]
+    }
+]

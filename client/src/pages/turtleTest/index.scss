@@ -1,0 +1,28 @@
+@import '../../style/var.scss';
+@import '../../style/mobile.scss';
+
+.turtleneck-test-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $GN-7;
+
+    .turtleneck-test-content-wrapper {
+        background-color: $IV;
+        @include set-vw(width, 500px);
+        @include set-vw(padding, 30px);
+
+        .intro-image {
+            width: 100%;
+        }
+        .test-start-button {
+            width: -webkit-fill-available;
+            background: $GN-7;
+            color: $IV;
+            @include set-vw(width, 200px);
+            @include set-vw(padding, 10px);
+            @include set-vw(border-radius, 20px);
+        }
+    }
+}
