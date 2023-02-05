@@ -1,6 +1,6 @@
 import turtleImg from '../../assets/images/neck_stretching_3.png';
 
-function Intro() {
+function Intro({ start }) {
     return (
         <div className="turtleneck-test-content-wrapper">
             <div className="">
@@ -9,6 +9,7 @@ function Intro() {
             <img className="intro-image" src={turtleImg}/>
             <button
                 className="test-start-button"
+                onClick={()=>start()}
             >
                 거북목 지수 테스트 시작하기
             </button>

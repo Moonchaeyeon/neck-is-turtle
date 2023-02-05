@@ -54,7 +54,9 @@ function TurtleTest() {
                     }
                     </div>
                 </div>
-                : <Intro />
+                : <Intro
+                    start={()=>{setTestStart(true)}}
+                />
             }
         </div>
     )
