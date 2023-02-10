@@ -66,6 +66,16 @@ class UserApi {
         return res.data;
     }
 
+    // 로그인 & 로그아웃
+    kakaoLoginHandler = async (kakaoAccessToken) => {
+        const res = await post('/user/kakao', {
+            accessToken: kakaoAccessToken
+        });
+        localStorage.setItem("accessToken", res.data.accessToken);
+        localStorage.setItem("refreshToken", res.data.refreshToken);
+        return res.data;
+    }
+
     setStraightRatio = async (ratio) => {
         await put(`/user/straight-ratio?straightRatio=${ratio}`);
         store.dispatch(setStraightRatio(ratio));
