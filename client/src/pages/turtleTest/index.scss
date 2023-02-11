@@ -8,21 +8,23 @@
     align-items: center;
     background-color: $GN-7;
 
+    .turtleneck-test-page-header {
+        width: -webkit-fill-available;
+        @include set-vw(padding, 15px);
+
+        .logo {
+            height: auto;
+            float: left;
+            @include set-vw(width, 90px);
+        }
+    }
+
     .turtleneck-test-content-wrapper {
         background-color: $IV;
+        min-height: 85vh;
         @include set-vw(width, 500px);
         @include set-vw(padding, 30px);
-
-        .intro-image {
-            width: 100%;
-        }
-        .test-start-button {
-            width: -webkit-fill-available;
-            background: $GN-7;
-            color: $IV;
-            @include set-vw(width, 200px);
-            @include set-vw(padding, 10px);
-            @include set-vw(border-radius, 20px);
-        }
+        @include set-vw(border-start-start-radius, 20px);
+        @include set-vw(border-start-end-radius, 20px);
     }
 }

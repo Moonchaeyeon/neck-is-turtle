@@ -1,0 +1,38 @@
+@import '../../style/var.scss';
+@import '../../style/mobile.scss';
+
+.turtleneck-test-content-wrapper {
+    width: 100%;
+
+    .intro-image {
+        width: 100%;
+        @include set-vw(border-radius, 10px);
+    }
+
+    .test-title {
+        font-weight: 600;
+        @include set-vw(font-size, 24px);
+        @include set-vw(margin-top, 30px);
+        @include set-vw(margin-bottom, 30px);
+    }
+    .test-description {
+        font-weight: 500;
+        line-height: 160%;
+        color: $GN-6;
+        @include set-vw(font-size, 18px);
+        @include set-vw(margin-bottom, 30px);
+    }
+    .test-start-button {
+        width: -webkit-fill-available;
+        background-color: $GN-1;
+        box-shadow: 0px 0px 10px rgb(0 87 0 / 18%);
+        position: sticky;
+        bottom: 10vh;
+        font-weight: 500;
+        @include set-vw(font-size, 18px);
+        @include set-vw(margin-top, 70px);
+        @include set-vw(padding, 20px);
+        @include set-vw(border-radius, 20px);
+        @include active-color($GN-2);
+    }
+}

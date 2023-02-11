@@ -8,6 +8,7 @@ import Stretching from './pages/stretching';
 import StretchingAll from './pages/stretchingAll';
 import OAuth from './pages/oauth';
 import TurtleTest from './pages/turtleTest';
+import TurtleTestResult from './pages/turtleTest/result';
 
 function App() {
   const showLogin = useSelector(state=>state.modal.showLogin);
@@ -24,7 +25,10 @@ function App() {
             <Route index element={<StretchingAll />}/>
             <Route path=":stretchingId" element={<Stretching />}/>
           </Route>
-          <Route path="/test/turtleneck" element={<TurtleTest />}/>
+          <Route path="/test/turtleneck">
+            <Route index element={<TurtleTest />}/>
+            <Route path="result" element={<TurtleTestResult />}/>
+          </Route>
           <Route path="/oauth" element={<OAuth />}/>
           <Route path="/" element={<Home />}/>
         </Routes>
