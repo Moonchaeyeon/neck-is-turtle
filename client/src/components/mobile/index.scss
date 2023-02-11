@@ -1,0 +1,30 @@
+@import '../../style/var.scss';
+@import '../../style/mobile.scss';
+
+.mobile-template {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $GN-7;
+
+    .mobile-template-header {
+        width: -webkit-fill-available;
+        @include set-vw(padding, 15px);
+
+        .logo {
+            height: auto;
+            float: left;
+            @include set-vw(width, 90px);
+        }
+    }
+
+    .mobile-template-content {
+        background-color: $IV;
+        min-height: 85vh;
+        @include set-vw(width, 500px);
+        @include set-vw(padding, 30px);
+        @include set-vw(border-start-start-radius, 20px);
+        @include set-vw(border-start-end-radius, 20px);
+    }
+}
