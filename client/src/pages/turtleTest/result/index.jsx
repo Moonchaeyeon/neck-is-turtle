@@ -1,23 +1,42 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import resultList from './resultList.json';
+import serviceList from './serviceList.json';
+import categoryAnalysisList from './categoryAnalysisList.json';
 import MobileTemplate from "../../../components/mobile";
 import {ReactComponent as KakaoIcon} from '../../../assets/svg/kakao.svg';
 import './index.scss';
 
 function TurtleTestResult() {
+    const navigation = useNavigate();
     const [searchParams, setSearchParams] = useSearchParams();
     const [totalScore, setTotalScore] = useState(0);
     const [result, setResult] = useState();
     const [categoryResultList, setCategoryResultList] = useState([]);
+    const [categoryAnalysis, setCategoryAnalysis] = useState("");
 
     useEffect(()=>{
-        setTotalScore(searchParams.get('totalScore'));
+        if (categoryResultList.length) {
+            let maxScore = 0;
+            let maxCategoryId;
+            for(let el of categoryResultList) {
+                if (maxScore < el.score) {
+                    maxScore = el.score;
+                    maxCategoryId = el.id;
+                }
+            }
+            let tempCategoryAnalysis = categoryAnalysisList.find(el=>el.id === maxCategoryId);
+            setCategoryAnalysis(result?.level < 3 ? tempCategoryAnalysis.analysisList[0] : tempCategoryAnalysis.analysisList[1]);
+        }
+    }, [result, setCategoryResultList])
+    
+    useEffect(()=>{
+        setTotalScore(Number(searchParams.get('total')));
         setCategoryResultList([
-            { name: '통증', score: searchParams.get('pain') },
-            { name: '생활', score: searchParams.get('habit') },
-            { name: '자세', score: searchParams.get('pose') }
+            { id: 'pain', name: '통증', score: Number(searchParams.get('pain')) },
+            { id: 'habit', name: '생활', score: Number(searchParams.get('habit')) },
+            { id: 'pose', name: '자세', score: Number(searchParams.get('pose')) }
         ])
     }, [searchParams])
 
@@ -26,7 +45,7 @@ function TurtleTestResult() {
             objectType: 'feed',
             content: {
                 title: `거북목 테스트 결과 확인하기`,
-                description: ``,
+                description: `${result.title} 입니다.`,
                 imageUrl: result.image,
                 link: {
                     mobileWebUrl: window.location.href,
@@ -34,16 +53,13 @@ function TurtleTestResult() {
                 },
             },
             social: {
-                //   likeCount: parseInt(post?.likedNum),
-                //   commentCount: parseInt(commentList?.length),
-                //   sharedCount: 845,
             },
             buttons: [
                 {
-                    title: `나도 하러가기`,
+                    title: `거북목 지수 확인하러 가기`,
                     link: {
-                        mobileWebUrl: window.location.href,
-                        webUrl: window.location.href,
+                        mobileWebUrl: `https://neckisturtle.com/test/turtleneck`,
+                        webUrl: `https://neckisturtle.com/test/turtleneck`,
                     },
                 }
             ],
@@ -54,11 +70,12 @@ function TurtleTestResult() {
 
     useEffect(()=>{
         // 현재에 맞는 조건을 찾음
-        resultList.forEach((el)=>{
+        for (let el of resultList) {
             if (totalScore <= el.maxScore) {
                 setResult(el);
+                break;
             }
-        })
+        }
     }, [totalScore])
 
     return (
@@ -79,6 +96,12 @@ function TurtleTestResult() {
                                 <div key={idx} className="result-text">{text}</div>
                             ))
                         }
+                        {
+                            categoryAnalysis && 
+                            <div className="result-text">
+                                { categoryAnalysis }
+                            </div>
+                        }
                     </div>
                 </div>
             }
@@ -94,6 +117,21 @@ function TurtleTestResult() {
                                     id={categoryResult.score > 50 ? 'over-50' : 'under-50'}
                                 />
                             </div>
+                        </div>
+                    ))
+                }
+            </div>
+            <div className="service-wrapper">
+                {
+                    serviceList.map((service, idx)=>(
+                        <div className="service-elem">
+                            <div className="service-title">{service.title}</div>
+                            <button
+                                className="service-button"
+                                onClick={()=>{navigation(service.buttonLink)}}
+                            >
+                                { service.buttonText }
+                            </button>
                         </div>
                     ))
                 }

@@ -8,7 +8,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './public/index.html',
             minify: false,
-            KAKAO_API_KEY: process.env.REACT_APP_KAKAO_API_KEY,
+            KAKAO_JAVASCRIPT_KEY: process.env.REACT_APP_KAKAO_JAVASCRIPT_KEY,
         }),
     ],
 };

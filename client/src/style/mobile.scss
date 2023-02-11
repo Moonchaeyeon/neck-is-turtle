@@ -13,4 +13,11 @@ $vw-viewport: 600;
     #{$property}: $px;
 }
 
+@mixin set-pair-vw($property, $h-px, $v-px){
+    @include MOBILE {
+        #{$property}: get-vw($h-px) get-vw($v-px);
+    }
+    #{$property}: $h-px $v-px;
+}
+
 @mixin MOBILE{ @media (max-width: 600px){ @content; } } // 모바일 화면
