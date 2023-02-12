@@ -10,12 +10,15 @@
     }
 
     .test-title {
-        font-weight: 600;
-        @include set-vw(font-size, 24px);
+        font-family: 'KOTRAHOPE';
+        font-weight: 500;
+        color: $GN-6;
+        @include set-vw(font-size, 28px);
         @include set-vw(margin-top, 30px);
         @include set-vw(margin-bottom, 30px);
     }
     .test-description {
+        font-family: 'KyoboHand';
         font-weight: 500;
         line-height: 160%;
         color: $GN-6;
@@ -23,13 +26,14 @@
         @include set-vw(margin-bottom, 30px);
     }
     .test-start-button {
+        font-family: 'KOTRAHOPE';
         width: -webkit-fill-available;
         background-color: $GN-1;
         box-shadow: 0px 0px 10px rgb(0 87 0 / 18%);
         position: sticky;
         bottom: 10vh;
         font-weight: 500;
-        @include set-vw(font-size, 18px);
+        @include set-vw(font-size, 20px);
         @include set-vw(margin-top, 70px);
         @include set-vw(padding, 20px);
         @include set-vw(border-radius, 20px);

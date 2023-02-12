@@ -39,16 +39,19 @@
     }
 
     .question-idx {
-        font-weight: 600;
+        font-family: 'KOTRAHOPE';
+        font-weight: 500;
         color: $RE;
-        @include set-vw(font-size, 20px);
+        @include set-vw(font-size, 30px);
     }
 
     .question-title {
+        font-family: 'KOTRAHOPE';
         font-weight: 500;
         white-space: pre-wrap;
         line-height: 160%;
-        @include set-vw(font-size, 18px);
+        color: $GN-6;
+        @include set-vw(font-size, 24px);
         @include set-vw(margin-top, 50px);
         @include set-vw(margin-bottom, 50px);
     }
@@ -60,12 +63,13 @@
         @include set-vw(gap, 30px);
 
         .answer-elem {
+            font-family: 'KyoboHand';
             width: -webkit-fill-available;
             background-color: $GN-1;
             box-shadow: 0px 0px 10px rgb(0 87 0 / 18%);
             font-weight: 500;
             @include set-vw(padding, 14px);
-            @include set-vw(font-size, 14px);
+            @include set-vw(font-size, 16px);
             @include set-vw(border-radius, 15px);
             @include active-color($GN-2);
         }

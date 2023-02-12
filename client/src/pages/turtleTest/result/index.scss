@@ -3,14 +3,15 @@
 
 .turtleneck-test-result {
     .result-title {
+        font-family: KOTRAHOPE;
         font-weight: 600;
-        @include set-vw(font-size, 24px);
+        @include set-vw(font-size, 26px);
         @include set-vw(margin-top, 30px);
         @include set-vw(margin-bottom, 30px);
 
         span {
             color: $GN-5;
-            @include set-vw(font-size, 26px);
+            @include set-vw(font-size, 32px);
         }
     }
     .result-description {
@@ -33,6 +34,7 @@
         @include set-vw(gap, 15px);
 
         .result-text {
+            font-family: 'KyoboHand';
             font-weight: 500;
             line-height: 160%;
             text-align: left;
@@ -68,12 +70,16 @@
         .category-result-elem {
             display: flex;
             align-items: center;
+            @include set-vw(gap, 10px);
 
             .category-result-title {
-                font-weight: 600;
-                text-align: left;
+                font-family: KOTRAHOPE;
+                font-weight: 500;
+                text-align: center;
+                color: $GR-5;
                 @include set-vw(width, 50px);
-                @include set-vw(font-size, 16px);
+                @include set-vw(border-radius, 20px);
+                @include set-vw(font-size, 18px);
             }
 
             .category-result-scorebar {
@@ -110,6 +116,7 @@
             @include set-vw(gap, 20px);
             
             .service-title {
+                font-family: 'KyoboHand';
                 flex-grow: 1;
                 text-align: left;
                 font-weight: 500;
@@ -118,11 +125,12 @@
             }
 
             .service-button {
+                font-family: KOTRAHOPE;
                 background-color: $GN-4;
-                font-weight: 600;
+                // font-weight: 600;
                 color: white;
                 box-shadow: 0px 0px 10px #224b0057;
-                @include set-vw(font-size, 16px);
+                @include set-vw(font-size, 18px);
                 @include set-pair-vw(padding, 10px, 20px);
                 @include set-vw(border-radius, 20px);
             }
@@ -133,8 +141,10 @@
         @include set-vw(margin-top, 50px);
 
         .share-text {
+            font-family: KOTRAHOPE;
             font-weight: 500;
-            @include set-vw(font-size, 18px);
+            color: $GN-7;
+            @include set-vw(font-size, 20px);
             @include set-vw(margin-bottom, 20px);
         }
 
