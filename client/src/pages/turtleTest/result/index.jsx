@@ -32,11 +32,14 @@ function TurtleTestResult() {
     }, [result, setCategoryResultList])
     
     useEffect(()=>{
-        setTotalScore(Number(searchParams.get('total')));
+        let painScore = Number(searchParams.get('pain'));
+        let habitScore = Number(searchParams.get('habit'));
+        let poseScore = Number(searchParams.get('pose'));
+        setTotalScore(searchParams.get('total'));
         setCategoryResultList([
-            { id: 'pain', name: '통증', score: Number(searchParams.get('pain')) },
-            { id: 'habit', name: '생활', score: Number(searchParams.get('habit')) },
-            { id: 'pose', name: '자세', score: Number(searchParams.get('pose')) }
+            { id: 'pain', name: '통증', score: painScore },
+            { id: 'habit', name: '생활', score: habitScore },
+            { id: 'pose', name: '자세', score: poseScore }
         ])
     }, [searchParams])
 

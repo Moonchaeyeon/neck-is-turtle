@@ -37,17 +37,25 @@ function TurtleTest() {
 
     const selectAnswer = (score) => {
         // add score
+        let pain = painScore;
+        let habit = habitScore;
+        let pose = poseScore;
+
+
         setTotalScore(totalScore + score);
         const categoryMaxScore = turtleTestQuestion[currCategoryIdx].maxScore;
         switch (currCategoryIdx) {
             case 0:
-                setPainScore(painScore + score / categoryMaxScore * 100);
+                pain = painScore + score / categoryMaxScore * 100;
+                setPainScore(pain);
                 break;
             case 1:
-                setHabitScore(habitScore + score / categoryMaxScore * 100);
+                habit = habitScore + score / categoryMaxScore * 100;
+                setHabitScore(habit);
                 break;
             case 2:
-                setPoseScore(poseScore + score / categoryMaxScore * 100);
+                pose = poseScore + score / categoryMaxScore * 100;
+                setPoseScore(pose);
                 break;
             default:
                 break;
@@ -64,7 +72,7 @@ function TurtleTest() {
                 setCurrQuestionNum(currQuestionNum + 1);
             } else {
                 // 마지막 문제까지 완료했을 때 결과 페이지로 이동
-                navigation(`result?total=${Math.round(totalScore)}&pain=${Math.round(painScore)}&habit=${Math.round(habitScore)}&pose=${Math.round(poseScore)}`)
+                navigation(`result?total=${Math.round(totalScore)}&pain=${Math.round(pain)}&habit=${Math.round(habit)}&pose=${Math.round(pose)}`)
             }
         }
     }
