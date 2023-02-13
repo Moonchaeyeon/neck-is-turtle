@@ -13,7 +13,7 @@
     {
         "level": 2,
         "title": "거북이계의 샛별",
-        "image": "http://movie-img.yes24.com/NYes24/MOVIE//M14/M75/M00004147501_93325.JPG",
+        "image": "https://neckisturtle-bucket.s3.ap-northeast-2.amazonaws.com/test-result/turtleneck/2.png",
         "maxScore": 19,
         "analysisList": [
             "자네는 아직 거북목은 아니지만, 지금 습관을 유지할 경우 거북목이 될 수도 있겠어.",
