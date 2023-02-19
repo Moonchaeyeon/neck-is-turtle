@@ -1,11 +1,8 @@
 import { ResponsivePie } from '@nivo/pie';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
 
-const TodayPostureChart = ({  /* see data tab */ }) => {
-    const straightTime = useSelector(state=>state.pose.straightTime);
-    const turtleTime = useSelector(state=>state.pose.turtleTime);
+const PoseTimeRatioChart = ({straightTime, turtleTime}) => {
     const [data, setData] = useState([])
     
     useEffect(()=>{
@@ -113,4 +110,4 @@ const TodayPostureChart = ({  /* see data tab */ }) => {
     />
     )
 }
-export default TodayPostureChart;
+export default PoseTimeRatioChart;
