@@ -2,6 +2,110 @@
 @import '../../style/mobile.scss';
 
 .check-pose-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .check-pose-title {
+        font-family: KOTRAHOPE;
+        font-weight: 500;
+        color: $GN-7;
+        @include set-vw(font-size, 30px);
+        @include set-vw(margin-bottom, 10px);
+    }
+
+    .check-pose-descripton {
+        font-family: KyoboHand;
+        font-weight: 300;
+        color: $GR-5;
+        @include set-vw(font-size, 15px);
+        @include set-vw(margin-bottom, 20px);
+    }
+
+    input[type=file] { display: none; }
+
+    .pose-image {
+        width: auto;
+        object-fit: contain;
+        @include set-vw(max-height, 300px);
+        @include set-vw(border-radius, 10px);
+    }
+
+    .pose-image-input-label {
+        font-family: KOTRAHOPE;
+        width: fit-content;
+        background-color: $GR-2;
+        box-shadow: 0px 0px 10px rgb(0 87 0 / 18%);
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        @include set-vw(font-size, 15px);
+        @include set-vw(margin-top, 10px);
+        @include set-vw(gap, 10px);
+        @include set-vw(border-radius, 20px);
+        @include set-pair-vw(padding, 10px, 20px);
+        @include active-scale;
+    }
+
+    .share-button-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include set-vw(gap, 10px);
+        @include set-vw(margin-top, 50px);
+
+        .share-button {
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @include set-vw(width, 50px);
+            @include set-vw(height, 50px);
+            @include active-scale;
+
+            svg {
+                @include set-vw(width, 30px);
+                @include set-vw(height, 30px);
+            }
+
+            &#kakao {
+                background-color: #f7e600;
+                @include active-color(#f7e600);
+            }
+        }
+    }
+
+
+    .pose-image-input-notice {
+        font-family: KyoboHand;
+        color: $GR-6;
+        @include set-vw(font-size, 15px);
+        @include set-vw(margin-top, 10px);
+    }
+    
+    .pose-image-input-label-inital {
+        font-family: KOTRAHOPE;
+        background-color: $GN-2;
+        box-shadow: 0px 0px 10px rgb(0 87 0 / 18%);
+        font-weight: 500;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @include set-vw(font-size, 17px);
+        @include set-vw(gap, 10px);
+        @include set-vw(border-radius, 25px);
+        @include set-vw(width, 350px);
+        @include set-vw(height, 150px);
+        @include set-vw(margin-top, 50px);
+        @include active-scale;
+
+        .camera-icon {
+            @include set-vw(width, 30px);
+            @include set-vw(height, 30px);
+        }
+    }
+
     .report-content-text {
         font-family: KyoboHand;
         font-weight: 500;

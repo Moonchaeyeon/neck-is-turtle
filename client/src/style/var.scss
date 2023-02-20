@@ -34,6 +34,13 @@ $browser-context : 8;
     }
 }
 
+@mixin active-scale($scale: 0.95, $transition: 0.3s) {
+    transition: $transition;
+    &:active {
+        transform: scale($scale);
+    }
+}
+
 // animation
 @mixin animation-showPop($duration: 0.5s) {
     animation: showPop $duration linear;
