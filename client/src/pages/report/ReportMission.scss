@@ -1,0 +1,33 @@
+@import '../../style/var.scss';
+@import '../../style/mobile.scss';
+
+.report-mission-container {
+    .report-mission-title {
+        font-family: KOTRAHOPE;
+        text-align: left;
+        color: $GN-5;
+        @include set-vw(font-size, 20px);
+        @include set-vw(margin-bottom, 15px);
+    }
+
+    .report-mission-wrapper {
+        display: flex;
+        flex-direction: column;
+        @include set-vw(gap, 10px);
+
+        .report-mission-elem {
+            display: flex;
+            align-items: center;
+            font-family: KyoboHand;
+            text-align: left;
+            @include set-vw(font-size, 14px);
+            @include set-vw(gap, 10px);
+            
+            .status-icon {
+                color: $GR-4;
+
+                &#complete { color: $GN-4; }
+            }
+        }
+    }
+}

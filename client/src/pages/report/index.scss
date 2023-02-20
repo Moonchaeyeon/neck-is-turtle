@@ -12,7 +12,7 @@
         align-items: center;
         justify-content: center;
         @include set-vw(gap, 30px);
-        @include set-vw(margin-bottom, 50px);
+        @include set-vw(margin-bottom, 40px);
 
         div {
             border-radius: 50%;
@@ -23,25 +23,75 @@
         }
     }
 
+    .report-date {
+        font-family: KOTRAHOPE;
+        font-weight: 400;
+        color: $GR-4;
+        @include set-vw(font-size, 15px);
+    }
+
     .report-title {
         font-family: KOTRAHOPE;
         font-weight: 500;
         color: $GN-7;
-        @include set-vw(font-size, 25px);
+        @include set-vw(font-size, 30px);
         @include set-vw(margin-bottom, 20px);
 
     }
 
-    .chart-wrapper {
-        @include set-vw(width, 500px);
-        @include set-vw(height, 400px);
+    .report-chart-container {
+        display: flex;
+        align-items: center;
+
+        .chart-wrapper {
+            @include set-vw(width, 300px);
+            @include set-vw(height, 300px);
+
+            text {
+                font-family: KyoboHand !important;
+                font-weight: 500;
+                font-size: 120% !important;
+            }
+
+            g {
+                circle {
+                    r: 2% !important;
+                }
+            }
+
+        }
+        
+        .report-mission-container {
+            @include set-vw(width, 200px);
+        }
+
+        .report-chart-title {
+            font-family: KOTRAHOPE;
+            font-weight: 500;
+            color: $GN-5;
+            text-align: left;
+            @include set-vw(font-size, 20px);
+            @include set-vw(margin-bottom, 10px);
+        }
+
+        .report-total-time {
+            font-family: KyoboHand;
+            font-weight: 700;
+            color: $GR-6;
+            text-align: left;
+            background-color: $GR-1;
+            @include set-pair-vw(padding, 10px, 20px);
+            @include set-vw(font-size, 20px);
+            @include set-vw(margin-bottom, 20px);
+            @include set-vw(border-radius, 20px);
+        }
     }
 
     .report-content-text {
         font-family: KyoboHand;
         font-weight: 500;
         color: $GN-7;
-        @include set-vw(font-size, 20px);
+        @include set-vw(font-size, 18px);
         @include set-vw(margin-top, 20px);
 
         div {
@@ -67,7 +117,7 @@
                 content: "";
                 width: 100%;
                 height: 1px;
-                background-color: $GN-7;
+                background-color: $GR-2;
                 position: absolute;
                 left: 0; bottom: 0;
             }
