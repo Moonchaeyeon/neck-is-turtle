@@ -10,6 +10,7 @@ import OAuth from './pages/oauth';
 import TurtleTest from './pages/turtleTest';
 import TurtleTestResult from './pages/turtleTest/result';
 import Report from './pages/report';
+import CheckPose from './pages/checkPose';
 
 function App() {
   const showLogin = useSelector(state=>state.modal.showLogin);
@@ -32,6 +33,7 @@ function App() {
           </Route>
           <Route path="/report/:userInfo" element={<Report />}/>
           <Route path="/oauth" element={<OAuth />}/>
+          <Route path="/check-pose" element={<CheckPose />}/>
           <Route path="/" element={<Home />}/>
         </Routes>
       </BrowserRouter>

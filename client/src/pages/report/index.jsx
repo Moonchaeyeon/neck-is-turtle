@@ -8,15 +8,15 @@ import './index.scss';
 import ReportMission from "./ReportMission";
 
 function Report() {
-    const [straightRatio, setStraightRatio] = useState(70);
-    const [totalTime, setTotalTime] = useState(8 * 60);
+    const [straightRatio, setStraightRatio] = useState(20);
+    const [totalTime, setTotalTime] = useState(11 * 60);
 
     const [reportData, setReportData] = useState({
         turtleTime: 300,
         straightTime: 200,
         userName: '방울토망토',
         date: '2022-03-07',
-        missionList: [1]
+        missionList: [1, 2, 3, 4]
     });
 
     useEffect(()=>{
@@ -70,7 +70,7 @@ function Report() {
                                 이대로면 금방 바른자세 왕이 될 수 있겠어 😄
                             </div>
                             {
-                                !!(totalTime >= 10 * 60)
+                                !!(totalTime >= 30 * 60)
                                 ? 
                                 // 측정 시간이 10분 이상일 경우
                                 <>
@@ -121,7 +121,7 @@ function Report() {
                                 힘들어도 우리 조금만 더 노력해보세!
                             </div>
                             {
-                                !!(totalTime >= 10 * 60)
+                                !!(totalTime >= 30 * 60)
                                 ?
                                 // 측정 시간이 10분 이상일 경우
                                 <>

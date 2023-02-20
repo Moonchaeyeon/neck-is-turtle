@@ -1,0 +1,41 @@
+@import '../../style/var.scss';
+@import '../../style/mobile.scss';
+
+.check-pose-page {
+    .report-content-text {
+        font-family: KyoboHand;
+        font-weight: 500;
+        color: $GN-7;
+        @include set-vw(font-size, 18px);
+        @include set-vw(margin-top, 20px);
+
+        div {
+            line-height: 160%;
+            position: relative;
+            @include set-vw(margin-bottom, 10px);
+
+            b {
+                position: relative;
+
+                &::after {
+                    content: "";
+                    width: 100%;
+                    position: absolute;
+                    left: 0; bottom: 0;
+                    background-color: $GN-1;
+                    background-color: #ff000017;
+                    @include set-vw(height, 15px);
+                }
+            }
+
+            &::after {
+                content: "";
+                width: 100%;
+                height: 1px;
+                background-color: $GR-2;
+                position: absolute;
+                left: 0; bottom: 0;
+            }
+        }
+    }
+}
