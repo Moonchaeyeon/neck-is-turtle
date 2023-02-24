@@ -18,6 +18,8 @@
     img.user-profile {
         width: rem(150); height: rem(150);
         border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
         border: 1px solid $IV;
     }
 
