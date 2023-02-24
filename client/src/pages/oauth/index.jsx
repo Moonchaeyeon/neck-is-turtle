@@ -14,7 +14,7 @@ function Oauth() {
             const kakaoToken = res.data.access_token;
 
             await userApi.kakaoLoginHandler(kakaoToken);
-
+            
             console.log('kakao token: ', kakaoToken);
             console.log("code: ", searchParams.get('code'));
             navigation('/');

@@ -73,6 +73,9 @@ class UserApi {
         });
         localStorage.setItem("accessToken", res.data.accessToken);
         localStorage.setItem("refreshToken", res.data.refreshToken);
+
+        this.getUserInfo();
+        
         return res.data;
     }
 
