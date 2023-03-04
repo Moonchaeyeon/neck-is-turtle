@@ -3,7 +3,7 @@ import { useState } from "react";
 import PoseTimeRatioChart from "../../components/home/dashboard/PoseTimeRatioChart";
 import Mission from "../../components/home/mission";
 import MobileTemplate from "../../components/mobile";
-import { secToStringKor } from "../../utils/Time";
+import { secToStringKor } from "../../utils/function/Time";
 import './index.scss';
 import ReportMission from "./ReportMission";
 

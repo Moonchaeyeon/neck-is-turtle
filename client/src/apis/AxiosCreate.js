@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getRefreshToken } from '../utils/function/TokenHandler';
 
 const apiClient = axios.create({
     headers: {
@@ -25,8 +26,11 @@ apiClient.interceptors.response.use(
     config => {
         return config
     },
-    error => {
-        console.log(error);
+    async (error) => {
+        // access token에 문제가 있다면
+        if (error.response.status === 401) {
+            await getRefreshToken();
+        }
         return Promise.reject(error);
     }
 )

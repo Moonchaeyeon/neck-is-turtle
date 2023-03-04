@@ -1,4 +1,4 @@
-import { getDegree, getDirectionVector, getDistance, getMidPoint } from "../Vector";
+import { getDegree, getDirectionVector, getDistance, getMidPoint } from "../function/Vector";
 import step1 from "../../assets/images/neck_stretching_1.jpeg";
 import step2 from "../../assets/images/neck_stretching_2.png";
 import step3 from "../../assets/images/neck_stretching_3.png";

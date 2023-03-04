@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { checkAuth } from './utils/CheckAuth';
+import { checkAuth } from './utils/function/CheckAuth';
 import Home from './components/home';
 import LoginModal from './components/login';
 import Stretching from './pages/stretching';

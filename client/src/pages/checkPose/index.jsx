@@ -4,7 +4,7 @@ import MobileTemplate from "../../components/mobile";
 import './index.scss';
 import { useRef } from "react";
 import { left_ear, right_ear, left_shoulder, nose, right_shoulder } from "../../utils/data/mediapipeDots";
-import { getDegree, getMidPoint, getDirectionVector } from "../../utils/Vector";
+import { getDegree, getMidPoint, getDirectionVector } from "../../utils/function/Vector";
 import { BsCameraFill } from "react-icons/bs";
 import { ReactComponent as KakaoIcon } from '../../assets/svg/kakao.svg';
 

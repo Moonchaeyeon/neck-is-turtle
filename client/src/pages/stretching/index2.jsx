@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { getDegree, getDirectionVector, getMidPoint } from "../../utils/Vector";
+import { getDegree, getDirectionVector, getMidPoint } from "../../utils/function/Vector";
 import { BsFillCheckCircleFill } from 'react-icons/bs';
 import MissionApi from "../../apis/MissionApi";
 import WebCam from "./WebCam";

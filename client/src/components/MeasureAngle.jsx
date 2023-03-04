@@ -8,7 +8,7 @@ import { BsFillCheckCircleFill, BsFillExclamationTriangleFill } from 'react-icon
 import { AiTwotoneSetting } from 'react-icons/ai';
 import './MeasurePose.scss';
 import PoseStatusHandler from "./PoseStatusHandler";
-import { getDegree } from "../utils/Vector";
+import { getDegree } from "../utils/function/Vector";
 
 let camera;
 

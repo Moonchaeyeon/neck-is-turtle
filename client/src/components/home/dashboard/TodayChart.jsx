@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector } from 'react-redux';
-import { secToString } from '../../../utils/Time';
+import { secToString } from '../../../utils/function/Time';
 import MissionApi from "../../../apis/MissionApi";
 import Mission from '../mission';
 import PoseTimeRatioChart from './PoseTimeRatioChart';
