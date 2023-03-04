@@ -5,9 +5,9 @@ import { setAuth } from "../../redux/userData/userDataAction";
 export const getRefreshToken = async () => {
     try {
         const refreshToken = localStorage.getItem('refreshToken');
-        const res = await axios.get(`${process.env.REACT_APP_SERVER_HOST}/api/v1/token/refresh`, {
+        const res = await axios.get(`${process.env.REACT_APP_SERVER_HOST}/token/refresh`, {
             headers: {
-                refresh: refreshToken
+                Refresh: refreshToken
             }
         });
 
