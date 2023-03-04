@@ -16,10 +16,10 @@
 <br/>
 
 ### 🌿 서비스 바로가기
- <a href="https://neckisturtle.com">🏠 홈 대시보드 - 나의 자세 결과 시각화</a>
- <a href="https://neckisturtle.com/stretching/all">🧘‍♀️ 스트레칭 코칭 받기</a>
-<a href="https://neckisturtle.com/test/turtleneck">💯 거북목 지수 테스트 - 나의 거북 지수는?</a>
-<a href="https://neckisturtle.com/check-pose">🤔 나에게 지금 가해지고 있는 목 하중은?</a>
+ <a href="https://neckisturtle.com">🏠 홈 대시보드 - 나의 자세 결과 시각화</a><br/>
+ <a href="https://neckisturtle.com/stretching/all">🧘‍♀️ 스트레칭 코칭 받기</a><br/>
+<a href="https://neckisturtle.com/test/turtleneck">💯 거북목 지수 테스트 - 나의 거북 지수는?</a><br/>
+<a href="https://neckisturtle.com/check-pose">🤔 나에게 지금 가해지고 있는 목 하중은?</a><br/>
 <a href="https://neckisturtle.com/report/example">📝 오늘 하루 자세 리포트</a>
 
 <br/>
@@ -28,13 +28,16 @@
 <p>하단 이미지를 클릭해서 시청해주세요 :)</p>
 
 [![Video Label](https://user-images.githubusercontent.com/49464171/222917062-8b5d0469-7a8a-44c9-9f2b-960ecbec417f.png)](https://www.youtube.com/watch?v=W9b9dMaMn7c&t=2s)
+
 <br/>
+
 ### 🌿 팀원 소개
 
 | profile | [<img src="https://avatars.githubusercontent.com/u/39080868?v=4" width="300">](https://github.com/hyeyeon-sun) | [<img src="https://avatars.githubusercontent.com/u/49464171?v=4" width="300">](https://github.com/Moonchaeyeon) |
 |:---:|:---:|:---:|
 | name | 이혜연 | 문채연 |
 | role | <div align="left">💻 백엔드 개발</div><div align="left">:pencil: 기획</div> | <div align="left">💻 프론트엔드 개발</div><div align="left">:art: 디자인</div><div align="left">:pencil: 기획</div> |
+<br/>
 <br/>
 
 ![header](https://capsule-render.vercel.app/api?type=wave&color=39473e&height=150&section=footer)
