@@ -8,7 +8,10 @@ function StretchingAll() {
 
     return (
         <div className="streetching-all-page">
-            <h1 className="page-title">스트레칭</h1>
+            <div className="page-title-wrapper">
+                <div className="page-title">스트레칭</div>
+                <div className="page-description">함께 스트레칭을 진행해보아요!</div>
+            </div>
 
             <div className="stretching-container">
                 {
@@ -18,7 +21,10 @@ function StretchingAll() {
                             key={idx}
                         >
                             <img className="stretching-image" src={stretching.thumbnail}/>
-                            <h2 className="stretching-name">{ stretching.name }</h2>
+                            <div className="stretching-body">
+                                <div className="stretching-name">{ stretching.name }</div>
+                                <div className="stretching-description">{ stretching.description }</div>
+                            </div>
                         </div>
                     ))
                 }

@@ -53,7 +53,7 @@ const PoseTimeStackChart = ({}) => {
 
     useEffect(()=>{
         const td = new Date();
-        const today = `${td.getFullYear()}-${td.getMonth()+1}-${td.getDate()}`;
+        const today = `${td.getFullYear()}-${String(td.getMonth()+1).padStart(2, '0')}-${String(td.getDate()).padStart(2, '0')}`;
         const newPoseWeekData = poseWeekData.filter(el=>el.date !== today);
         const todayPoseInfo = {
             date: today,

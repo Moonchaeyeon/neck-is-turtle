@@ -170,6 +170,6 @@ export const shoulderStretchingSteps = [
 ]
 
 export const stretchingList = [
-    { id: 'neck', name: '목 스트레칭', thumbnail: step3, steps: neckStretchingSteps },
-    { id: 'shoulder', name: '어깨 스트레칭', thumbnail: shoulder01, steps: shoulderStretchingSteps },
+    { id: 'neck', name: '목 스트레칭', description: '목 뻐근한 사람들 여기여기 모여라~', thumbnail: step3, steps: neckStretchingSteps },
+    { id: 'shoulder', name: '어깨 스트레칭', description: '같이 어깨를 시원하게 풀어보자구요!', thumbnail: shoulder01, steps: shoulderStretchingSteps },
 ]
