@@ -1,13 +1,16 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import PoseTimeRatioChart from "../../components/home/dashboard/PoseTimeRatioChart";
 import Mission from "../../components/home/mission";
 import MobileTemplate from "../../components/mobile";
+import { decrypt } from "../../utils/function/Crypto";
 import { secToStringKor } from "../../utils/function/Time";
 import './index.scss';
 import ReportMission from "./ReportMission";
 
 function Report() {
+    const [searchParams, setSearchParams] = useSearchParams();
     const [straightRatio, setStraightRatio] = useState(20);
     const [totalTime, setTotalTime] = useState(11 * 60);
 
@@ -18,6 +21,15 @@ function Report() {
         date: '2022-03-07',
         missionList: [1, 2, 3, 4]
     });
+
+    useEffect(()=>{
+        const encrypted = searchParams.get('info');
+        console.log(encrypted);
+        const data = decrypt(encrypted);
+        // console.log(data);
+        // console.log("encrypted", encrypted);
+        // console.log("data", data);
+    }, [searchParams])
 
     useEffect(()=>{
         if (reportData) {
