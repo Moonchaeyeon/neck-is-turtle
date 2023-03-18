@@ -27,4 +27,10 @@
         @include set-vw(border-start-start-radius, 20px);
         @include set-vw(border-start-end-radius, 20px);
     }
+
+    .loading-container {
+        display: flex;
+        justify-content: center;
+        @include set-vw(height, 500px);
+    }
 }

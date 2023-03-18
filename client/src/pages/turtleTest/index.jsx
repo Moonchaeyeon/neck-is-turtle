@@ -6,11 +6,13 @@ import Question from './Question';
 import turtleTestQuestion from './turtleTestQuestion.json';
 import { ReactComponent as Logo } from '../../assets/svg/logo.svg';
 import './index.scss';
+import Loading from '../../components/loading/Loading';
 
 
 function TurtleTest() {
     const navigation = useNavigate();
     const [testStart, setTestStart] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [currCategoryIdx, setCurrCategoryIdx] = useState(0);
     const [currQuestionIdx, setCurrQuestionIdx] = useState(0);
     const [currQuestionNum, setCurrQuestionNum] = useState(1);
@@ -72,7 +74,10 @@ function TurtleTest() {
                 setCurrQuestionNum(currQuestionNum + 1);
             } else {
                 // 마지막 문제까지 완료했을 때 결과 페이지로 이동
-                navigation(`result?total=${Math.round(totalScore)}&pain=${Math.round(pain)}&habit=${Math.round(habit)}&pose=${Math.round(pose)}`)
+                setLoading(true);
+                setTimeout(()=>{
+                    navigation(`result?total=${Math.round(totalScore)}&pain=${Math.round(pain)}&habit=${Math.round(habit)}&pose=${Math.round(pose)}`)
+                }, [2000])
             }
         }
     }
@@ -83,7 +88,11 @@ function TurtleTest() {
                 <Logo className="logo"/>
             </div>
             {
-                testStart
+                loading
+                ? <div className="loading-container">
+                    <Loading />
+                </div>
+                : testStart
                 ? <Question 
                     question={currQuestionInfo?.question}
                     answerList={currQuestionInfo?.answers}

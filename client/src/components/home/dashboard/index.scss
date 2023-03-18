@@ -11,6 +11,7 @@
     display: flex;
     flex-direction: column;
     gap: rem(30);
+    box-shadow: 0 0 20px #242424;
 
     .today-chart {
         width: calc(50% - rem(10));
@@ -84,6 +85,7 @@
             font-size: rem(18);
             padding: 10px;
             color: $GR-6;
+            // font-family: 'KOTRAHOPE';
         }
     }
 

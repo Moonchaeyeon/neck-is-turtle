@@ -23,14 +23,12 @@ class PoseApi {
         const res = await put('pose/straight', {
             straightTime: time
         });
-        console.log('straight',time);
     }
 
     setTodayTurtleTime = async (time) => {
         const res = await put('pose/turtle', {
             turtleTime: time
         });
-        console.log('turtle',time);
     }
 
     savePoseTime = async (straightTime, turtleTime) => {

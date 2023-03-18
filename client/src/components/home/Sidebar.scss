@@ -20,15 +20,16 @@
         border-radius: 50%;
         object-fit: cover;
         object-position: center;
-        border: 1px solid $IV;
+        // border: 1px solid $IV;
+        box-shadow: 0 0 20px #424242;
     }
 
     .user-name-wrapper {
         .user-name {
-            font-size: rem(20);
-            font-weight: 700;
+            font-size: rem(25);
             color: $IV;
             margin-bottom: 10px;
+            font-family: 'KOTRAHOPE';
         }
 
         .user-title {
@@ -48,6 +49,7 @@
     }
 
     .link-container {
+        width: -webkit-fill-available;
         margin-top: auto;
         display: flex;
         flex-direction: column;
@@ -56,16 +58,30 @@
 
         .link-wrapper {
             width: -webkit-fill-available;
+            display: flex;
+            align-items: center;
             padding: rem(15);
             border-radius: rem(10);
             font-size: rem(13);
             font-weight: 500;
             text-align: left;
-            background: #ECEBC9;
+            background: #0000005e;
+            color: $IV;
             cursor: pointer;
-            @include hoverDown(-5px);
-            @include boxShadow;
-            @include active-scale(0.96);
+            font-family: 'KyoboHand';
+
+            .text {
+                flex-grow: 1;
+            }
+
+            svg {
+                transition: 0.3s;
+                font-size: rem(20);
+            }
+
+            &:active {
+                svg { transform: translateX(5px); }
+            }
         }
     }
 }
