@@ -11,11 +11,21 @@ function Home() {
     const straightTime = useSelector(state=>state.pose.straightTime);
     const turtleTime = useSelector(state=>state.pose.turtleTime);
 
-    const savePoseTime = async (e) => {
-        poseApi.savePoseTime(straightTime, turtleTime);
+    const savePoseTime = async () => {
+        await poseApi.savePoseTime(straightTime, turtleTime);
     }
 
     useEffect(()=>{
+        // 1분 마다 측정값 저장
+        const totalTime = straightTime + turtleTime;
+
+        if (totalTime && totalTime % 10 === 0) {
+            savePoseTime();
+        }
+    }, [straightTime, turtleTime])
+
+    useEffect(()=>{
+        // unload 되기 전 측정값 저장
         window.addEventListener('beforeunload', savePoseTime);
         return () => window.removeEventListener('beforeunload', savePoseTime);
     }, [straightTime, turtleTime])
