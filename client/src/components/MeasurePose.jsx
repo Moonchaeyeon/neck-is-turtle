@@ -115,17 +115,6 @@ function MeasurePose() {
               <span>올바른 자세입니다</span>
             </div>
           }
-          {/* {
-            !!(neckDegree > 28)
-            ? <div className="pose-status" id="turtle">
-              <BsFillExclamationTriangleFill />
-              <span>바르지 않은 자세입니다</span>
-            </div>
-            : <div className="pose-status" id="straight">
-              <BsFillCheckCircleFill />
-              <span>올바른 자세입니다</span>
-            </div>
-          } */}
             </>
             : <div className="post-not-detected">
               <BsFillExclamationTriangleFill />

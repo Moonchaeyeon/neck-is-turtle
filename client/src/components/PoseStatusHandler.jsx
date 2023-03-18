@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import MissionApi from "../apis/MissionApi";
 import usePushNotification  from "../hooks/usePushNotification";
-import { completeMission } from "../redux/mission/missionAction";
 import { detectStraight, detectTurtle } from "../redux/pose/poseAction";
 
 function PoseStatusHandler({ status }) {
@@ -49,7 +48,6 @@ function PoseStatusHandler({ status }) {
                     break;
                 default:
             }
-            // console.log(time.current, status);
         }, 1000);
 
         return () => clearInterval(timer.current);

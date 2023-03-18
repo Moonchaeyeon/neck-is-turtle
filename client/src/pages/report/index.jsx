@@ -1,17 +1,17 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { ReportApi } from "../../apis/ReportApi";
+import ReportMission from "./ReportMission";
 import PoseTimeRatioChart from "../../components/home/dashboard/PoseTimeRatioChart";
-import Mission from "../../components/home/mission";
 import MobileTemplate from "../../components/mobile";
-import { decrypt } from "../../utils/function/Crypto";
 import { secToStringKor } from "../../utils/function/Time";
 import './index.scss';
-import ReportMission from "./ReportMission";
 
 function Report() {
+    const reportApi = new ReportApi();
     const [searchParams, setSearchParams] = useSearchParams();
-    const [straightRatio, setStraightRatio] = useState(20);
+    const [straightRatio, setStraightRatio] = useState(0);
     const [totalTime, setTotalTime] = useState(11 * 60);
 
     const [reportData, setReportData] = useState({
@@ -19,13 +19,19 @@ function Report() {
         straightTime: 200,
         userName: '방울토망토',
         date: '2022-03-07',
-        missionList: [1, 2, 3, 4]
+        mission: [1, 2, 3, 4]
     });
 
     useEffect(()=>{
-        const encrypted = searchParams.get('info');
-        console.log(encrypted);
-        const data = decrypt(encrypted);
+        // console.log(encrypted);
+        const decryptReportData = async () => {
+            const encrypted = searchParams.get('info');
+            const decrypted = await reportApi.decryptReportData(encrypted);
+            console.log(decrypted);
+            setReportData(decrypted);
+        }
+        decryptReportData();
+        // const data = decrypt(encrypted);
         // console.log(data);
         // console.log("encrypted", encrypted);
         // console.log("data", data);
@@ -33,7 +39,13 @@ function Report() {
 
     useEffect(()=>{
         if (reportData) {
-            // setStraightRatio(reportData.turtleTime / (reportData.turtleTime + reportData.straightTime) * 100);
+            const _totalTime = reportData.turtleTime + reportData.straightTime;
+            if (_totalTime) {
+                setStraightRatio(reportData.straightTime / _totalTime * 100);
+            } else {
+                setStraightRatio(0);
+            }
+            setTotalTime(_totalTime);
             // setTimeScore(reportData.turtleTime > 10 * 3600 ? 'A' : 'B')
         }
     }, [reportData])
@@ -45,7 +57,7 @@ function Report() {
                     <div/><div/><div/><div/>
                     <div/><div/><div/><div/>
                 </div>
-                <div className="report-date">{reportData?.date}</div>
+                <div className="report-date">{reportData?.todayDate}</div>
                 <h1 className="report-title">
                     {reportData?.userName} 님의 자세 진단서
                 </h1>
@@ -61,7 +73,7 @@ function Report() {
                         <div className="report-chart-title">자세 측정 시간</div>
                         <div className="report-total-time">{ secToStringKor(totalTime) }</div>
                         <ReportMission 
-                            completedMissionIdList={reportData?.missionList}
+                            completedMissionIdList={reportData?.mission}
                         />
                     </div>
                 </div>
@@ -162,16 +174,16 @@ function Report() {
                         </>
                     }
                     {
-                        reportData?.missionList.length > 0
+                        reportData?.mission.length > 0
                         ? <>                                    
                             <div>
                                 다음은 <b>미션</b>을 한번 봐볼까,,
                             </div>
                             <div>
-                                4개의 미션중 <b>{reportData?.missionList.length}개의 미션을 달성</b>했군!
+                                4개의 미션중 <b>{reportData?.mission.length}개의 미션을 달성</b>했군!
                             </div>
                             {
-                                !!(reportData?.missionList.length >= 3)
+                                !!(reportData?.mission.length >= 3)
                                 ? <>
 
                                     <div>
@@ -182,7 +194,7 @@ function Report() {
                                 </>
                                 : <>
                                     <div>조금은 아쉬운 성과구먼,, 다음에는 조금더 분발해보자구 🥹😌</div>
-                                    <div>그래도 {reportData?.missionList.length}개의 미션일지라도, 하나도 달성하지 않은 것 보다는</div>
+                                    <div>그래도 {reportData?.mission.length}개의 미션일지라도, 하나도 달성하지 않은 것 보다는</div>
                                     <div>훨씬 칭찬할만 하지 🙃 잘했어! 내일은 조금 더 해보자구!</div>
                                 </>
                             }
