@@ -1,14 +1,18 @@
 import { useNavigate } from 'react-router-dom';
 import { stretchingList } from '../../utils/data/stretchingInfo';
+import { ReactComponent as Logo } from '../../assets/svg/logo.svg';
 import './index.scss';
 
 function StretchingAll() {
     const navigation = useNavigate();
-    
 
     return (
         <div className="streetching-all-page">
             <div className="page-title-wrapper">
+                <Logo 
+                    className="logo"
+                    onClick={()=>{navigation('/')}}
+                />
                 <div className="page-title">스트레칭</div>
                 <div className="page-description">함께 스트레칭을 진행해보아요!</div>
             </div>

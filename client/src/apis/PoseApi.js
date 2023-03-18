@@ -32,8 +32,12 @@ class PoseApi {
     }
 
     savePoseTime = async (straightTime, turtleTime) => {
-        await this.setTodayStraightTime(straightTime);
-        await this.setTodayTurtleTime(turtleTime);
+        // await this.setTodayStraightTime(straightTime);
+        // await this.setTodayTurtleTime(turtleTime);
+        const res = await post('pose/today', {
+            straightTime: straightTime,
+            turtleTime: turtleTime
+        });
     }
 
     getWeekPose = async () => {

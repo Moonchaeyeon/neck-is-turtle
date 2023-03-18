@@ -132,7 +132,10 @@
 
             .curr-stretching-description {
                 font-size: 1.4vw;
+                line-height: 160%;
                 font-weight: 500;
+                text-align: left;
+                word-break: keep-all;
             }
 
             .curr-stretching-info {

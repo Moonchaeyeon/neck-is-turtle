@@ -2,9 +2,11 @@ import MeasurePose from '../../MeasurePose';
 import PoseGraph from './PoseGraph';
 import PostureCalendar from './PostureCalendar';
 import { TodayChart } from './TodayChart';
+import { useSetDashboardData } from '../../../hooks/useSetDashboardData';
 import './index.scss';
 
 function Dashboard() {
+    const { dayMissionList } = useSetDashboardData();
 
     return (
         <div className="dashboard">
@@ -13,7 +15,7 @@ function Dashboard() {
                 <MeasurePose />
             </div>
             <div className="posture-transition-wrapper">
-                <PostureCalendar />
+                <PostureCalendar dayMissionList={dayMissionList}/>
                 <PoseGraph />
             </div>
 

@@ -6,6 +6,15 @@
     .page-title-wrapper {
         margin-top: 5rem;
         margin-bottom: 3rem;
+        position: relative;
+
+        .logo {
+            position: absolute;
+            left: 0; top: rem(-10);
+            width: rem(100);
+            height: auto;
+            cursor: pointer;
+        }
         
         .page-title {
             margin-bottom: 1rem;

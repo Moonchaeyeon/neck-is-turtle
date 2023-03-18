@@ -13,8 +13,13 @@ class MissionApi {
     }
 
     completeMission = async (missionId) => {
-        // await post(`mission/${missionId}`);
+        await post(`mission/${missionId}`);
         store.dispatch(completeMission(missionId));
+    }
+
+    get3MonthMission = async () => {
+        const res = await get('mission/3month-all');
+        return res.data;
     }
 }
 export default MissionApi;
