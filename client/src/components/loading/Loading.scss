@@ -1,0 +1,25 @@
+@import '../../style/var.scss';
+@import '../../style/mobile.scss';
+
+.loading-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include set-vw(gap, 15px);
+
+    div {
+        @include set-vw(width, 25px);
+        @include set-vw(height, 25px);
+        border-radius: 50%;
+        background-color: $GN-1;
+        animation: loadingAnimation 1s infinite;
+
+        &:nth-child(1) { animation-delay: 0s; }
+        &:nth-child(2) { animation-delay: 0.2s; }
+        &:nth-child(3) { animation-delay: 0.4s; }
+    }
+
+    @keyframes loadingAnimation {
+        50% { transform: translateY(2vh); }
+    }
+}

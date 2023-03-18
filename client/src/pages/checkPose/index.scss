@@ -142,4 +142,11 @@
             }
         }
     }
+
+    .loading-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include set-vw(height, 500px);
+    }
 }

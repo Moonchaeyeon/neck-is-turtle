@@ -7,12 +7,14 @@ import { left_ear, right_ear, left_shoulder, nose, right_shoulder } from "../../
 import { getDegree, getMidPoint, getDirectionVector } from "../../utils/function/Vector";
 import { BsCameraFill } from "react-icons/bs";
 import { ReactComponent as KakaoIcon } from '../../assets/svg/kakao.svg';
+import Loading from "../../components/loading/Loading";
 
 function CheckPose() {
     const [image, setImage] = useState(null);
     const [faceDetected, setFaceDetected] = useState(false);
     const [neckDegree, setNeckDegree] = useState(0);
     const [neckWeight, setNeckWeight] = useState(0);
+    const [loading, setLoading] = useState(false);
     const imgRef = useRef();
 
     const kakaotalkShare = async () => {
@@ -42,6 +44,13 @@ function CheckPose() {
 
         window.Kakao.Share.sendDefault(kakaoShareInfo);
     }
+
+    useEffect(()=>{
+        // 로딩 중 없애기
+        if (loading) {
+            setTimeout(()=>(setLoading(false)), 2000);
+        }
+    }, [loading])
 
     const onResults = (results) => {
         if (results.poseLandmarks?.length) {
@@ -86,7 +95,6 @@ function CheckPose() {
               typeof imgRef.current !== "undefined" &&
               imgRef.current !== null
             ) {
-                console.log(imgRef.current);
                 await pose.send({ image: imgRef.current });
             }
           }
@@ -103,6 +111,7 @@ function CheckPose() {
                     accept="image/*"
                     id="pose-image-input"
                     onChange={(e) => {
+                        setLoading(true);
                         const file = e.target.files[0];
                         const reader = new FileReader();
                         reader.onload = (e) => {
@@ -112,6 +121,13 @@ function CheckPose() {
                     }}
                 />
                 {
+                    loading &&
+                    <div className="loading-container">
+                        <Loading />
+                    </div>
+                }
+                {
+                    !loading && (
                     image
                     ? <>
                     <img className="pose-image" ref={imgRef} src={image}/>
@@ -168,6 +184,7 @@ function CheckPose() {
                         </label>
                         <div className="pose-image-input-notice">업로드한 사진은 서버에 저장하지 않으니, 안심해도 된다네.</div>
                     </>
+                )
                 }
                 <div className="share-button-wrapper">
                     <div 

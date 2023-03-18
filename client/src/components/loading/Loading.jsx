@@ -1,8 +1,10 @@
+import './Loading.scss';
+
 function Loading () {
 
     return (
-        <div>
-
+        <div className="loading-wrapper">
+            <div/><div/><div/>
         </div>
     )
 }
