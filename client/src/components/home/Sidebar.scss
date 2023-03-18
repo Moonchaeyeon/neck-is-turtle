@@ -2,7 +2,7 @@
 
 .sidebar {
     width: rem(280 - 40);
-    height: 100vh;
+    height: -webkit-fill-available;
     display: flex;
     flex-direction: column;
     gap: rem(30);
@@ -45,5 +45,27 @@
         font-weight: 600;
         @include hoverDown;
         @include boxShadow;
+    }
+
+    .link-container {
+        margin-top: auto;
+        display: flex;
+        flex-direction: column;
+        gap: rem(15);
+        margin-bottom: rem(20);
+
+        .link-wrapper {
+            width: -webkit-fill-available;
+            padding: rem(15);
+            border-radius: rem(10);
+            font-size: rem(13);
+            font-weight: 500;
+            text-align: left;
+            background: #ECEBC9;
+            cursor: pointer;
+            @include hoverDown(-5px);
+            @include boxShadow;
+            @include active-scale(0.96);
+        }
     }
 }

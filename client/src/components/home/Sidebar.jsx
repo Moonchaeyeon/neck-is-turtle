@@ -19,7 +19,20 @@ function Sidebar() {
                 <img className="user-profile" src={userPicture ? userPicture : defaultProfile} onError={(e)=>{e.currentTarget.src=defaultProfile}}/>
                 <div className="user-name-wrapper">
                     <div className="user-name">{ auth ? userName : "방울토망토" }</div>
-                    {/* <div className="user-title">바른 자세 전문가</div> */}
+                </div>
+                <div className="link-container">
+                    <a 
+                        className="link-wrapper"
+                        href="https://neckisturtle.com/test/turtleneck"
+                    >
+                        나의 거북 지수는? 🐢
+                    </a>
+                    <a 
+                        className="link-wrapper"
+                        href="https://neckisturtle.com/check-pose"
+                    >
+                        지금 내 목에 가해지고 있는 하중은? 💪
+                    </a>
                 </div>
                 </>
                 : <button className="go-to-login" onClick={()=>{dispatch(setShowLoginModal(true))}}>
