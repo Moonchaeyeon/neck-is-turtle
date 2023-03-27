@@ -1,57 +1,30 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import { ReportApi } from "../../apis/ReportApi";
-import ReportMission from "./ReportMission";
-import PoseTimeRatioChart from "../../components/home/dashboard/PoseTimeRatioChart";
-import MobileTemplate from "../../components/mobile";
+import { useState, useEffect } from "react";
 import { secToStringKor } from "../../utils/function/Time";
+import ReportMission from "./ReportMission";
+import PoseTimeRatioChart from "../home/dashboard/PoseTimeRatioChart";
+import MobileTemplate from "../mobile";
 import './index.scss';
 
-function Report() {
-    const reportApi = new ReportApi();
-    const [searchParams, setSearchParams] = useSearchParams();
+function Report({ reportData }) {
     const [straightRatio, setStraightRatio] = useState(0);
     const [totalTime, setTotalTime] = useState(11 * 60);
-
-    const [reportData, setReportData] = useState({
-        turtleTime: 300,
-        straightTime: 200,
-        userName: '방울토망토',
-        date: '2022-03-07',
-        mission: [1, 2, 3, 4]
-    });
-
-    useEffect(()=>{
-        // console.log(encrypted);
-        const decryptReportData = async () => {
-            const encrypted = searchParams.get('info');
-            const decrypted = await reportApi.decryptReportData(encrypted);
-            console.log(decrypted);
-            setReportData(decrypted);
-        }
-        decryptReportData();
-        // const data = decrypt(encrypted);
-        // console.log(data);
-        // console.log("encrypted", encrypted);
-        // console.log("data", data);
-    }, [searchParams])
 
     useEffect(()=>{
         if (reportData) {
             const _totalTime = reportData.turtleTime + reportData.straightTime;
             if (_totalTime) {
-                setStraightRatio(reportData.straightTime / _totalTime * 100);
+                setStraightRatio(Math.round(reportData.straightTime / _totalTime * 100 * 100) / 100);
             } else {
                 setStraightRatio(0);
             }
             setTotalTime(_totalTime);
-            // setTimeScore(reportData.turtleTime > 10 * 3600 ? 'A' : 'B')
         }
     }, [reportData])
 
     return (
         <MobileTemplate>
+        {
+            reportData &&
             <div className="report-page">
                 <div className="report-header">
                     <div/><div/><div/><div/>
@@ -71,7 +44,11 @@ function Report() {
                     </div>
                     <div className="report-mission-container">
                         <div className="report-chart-title">자세 측정 시간</div>
-                        <div className="report-total-time">{ secToStringKor(totalTime) }</div>
+                        <div className="report-total-time">
+                            { 
+                                totalTime ? secToStringKor(totalTime) : "X"
+                            }
+                        </div>
                         <ReportMission 
                             completedMissionIdList={reportData?.mission}
                         />
@@ -79,6 +56,15 @@ function Report() {
                 </div>
 
                 <div className="report-content-text">
+                    {
+                        !totalTime
+                        ? <>
+                            <div>허허,, 오늘은 자세를 한 번도 측정하지 않았군</div>
+                            <div>바른 자세 습관은 꾸준함으로부터 시작되는 거라네 🥹</div>
+                            <div>힘들어도 우리 조금만 더 노력해보세!</div>
+                            <div>내일은 자세를 측정해보도록 해보자고! 🏃‍♀️</div>
+                        </>
+                        : <>
                     {
                         straightRatio > 50 
                         ? 
@@ -174,7 +160,7 @@ function Report() {
                         </>
                     }
                     {
-                        reportData?.mission.length > 0
+                        reportData?.mission?.length > 0
                         ? <>                                    
                             <div>
                                 다음은 <b>미션</b>을 한번 봐볼까,,
@@ -206,9 +192,12 @@ function Report() {
                             <div><b>하나라도 미션을 달성하는건 꾸준한 습관 형성에 정말 중요</b>하다네 😂</div>
                             <div>내일은 꼭 미션을 달성해보자고 !</div>
                         </>
-                    }
+                    }                                
+                    </>
+                }
                 </div>
             </div>
+        }
         </MobileTemplate>
     )
 }

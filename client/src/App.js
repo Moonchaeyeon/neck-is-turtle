@@ -9,8 +9,10 @@ import StretchingAll from './pages/stretchingAll';
 import OAuth from './pages/oauth';
 import TurtleTest from './pages/turtleTest';
 import TurtleTestResult from './pages/turtleTest/result';
-import Report from './pages/report';
+import Report from './components/report';
 import CheckPose from './pages/checkPose';
+import ReportChatbot from './pages/reportChatbot';
+import ReportDay from './pages/reportDay';
 
 function App() {
   const showLogin = useSelector(state=>state.modal.showLogin);
@@ -31,7 +33,8 @@ function App() {
             <Route index element={<TurtleTest />}/>
             <Route path="result" element={<TurtleTestResult />}/>
           </Route>
-          <Route path="/report/:userInfo" element={<Report />}/>
+          <Route path="/report/day/:day" element={<ReportDay />}/>
+          <Route path="/report/chatbot" element={<ReportChatbot />}/>
           <Route path="/oauth" element={<OAuth />}/>
           <Route path="/check-pose" element={<CheckPose />}/>
           <Route path="/" element={<Home />}/>

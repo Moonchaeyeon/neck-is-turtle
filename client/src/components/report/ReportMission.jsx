@@ -13,7 +13,7 @@ function ReportMission({ completedMissionIdList }) {
                 missionList.map((mission)=>(
                     <div className="report-mission-elem">
                         {
-                            completedMissionIdList.includes(mission.id)
+                            completedMissionIdList?.includes(mission.id)
                             ? <BsCheckCircleFill className="status-icon" id="complete"/>
                             : <BsCircle className="status-icon"/>
                         }

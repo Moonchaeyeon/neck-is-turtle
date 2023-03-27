@@ -15,6 +15,7 @@ const MissionChart = ({ dayMissionList }) => (
         minValue={0}
         maxValue={4}
         dayBorderColor="#ffffff"
+        onClick={(day, event)=>{window.location.href=`/report/day/${day.day}`}}
         legends={[
             {
                 anchor: 'bottom-right',
